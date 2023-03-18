@@ -1,0 +1,118 @@
+<html>
+  <head>
+<!-- Generated from https://fonts.google.com/noto/specimen/Noto+Sans+Cuneiform -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Cuneiform&display=swap" rel="stylesheet">
+<!-- This code CC share-alike 4.0 Andrew Senior 2024.  -->
+
+    <script type="text/javascript" src="./signlist_alt.js"></script>
+    <script type="text/javascript" src="./cuneify.js"></script>
+    <script type="text/javascript" src="./cuneify_lib.js"></script>
+    <script type="text/javascript" src="./textnorm.js"></script>
+    <script type="text/javascript" src="./sign_counts_akk.js"></script>
+    <link type="text/css" rel="stylesheet" href="cuneify.css">
+</head>
+  <body onload='on_load()'>
+    <h1>Cuneify</h1>
+    Cuneify is a tool to turn a transliteration (of Sumerian or Babylonian) to the corresponding cuneiform.</p>
+Select the appropriate font for the language/period and type a transliteration in the text box, then hit &lt;enter&gt; to convert it into cuneiform.</p>
+Check the 'signlist' box to make a summary of the signs used with their counts and mouseover to see the <a href="https://andrewsenior.com/cuneify/sign_counts.html">frequency of the sign and reading.</a>
+e.g. "<span class="tooltip"><a onClick="inject_sample_text();" style="cursor: pointer; cursor: hand;"><span class="tooltiptext" id="myTooltip">Click to use this text.</span>e&#x2082;.gal {m}a&scaron;-&scaron;ur-pap-a &scaron;id a&scaron;-&scaron;ur-ni-&scaron;it {d}bad u {d}ma&scaron; na-ra-am {d}a-nim u {d}da-gan ka-&scaron;u-u&scaron; dingir{me&scaron;} gal{me&scaron;}</a></span>" (click to use this text)<br>
+[From "The Epithets of Assurnasirpal II", the first reading in "Complete Babylonian", Martin Worthington, 2nd ed. 2018.]</p>
+
+<!-- <input type="checkbox" id="autocopy"/> -->
+<!-- <label for="autocopy">Auto-copy new cuneiform to clipboard.</label>  -->
+(Click in the table below to copy transliterations or cuneiform.)<br>
+<input type="checkbox" id="make_signlist"/>
+<label for="make_signlist">Make signlist</label>
+<br>
+<table class="no_bordered_table">
+  <tbody>
+  <tr>
+    <td><label for="font_name">Font:</label></td>
+    <td>
+      <select name="font_name" id="font_name">
+  <option value="notosanscuneiform">Noto Sans (font: Noto Sans )</option>
+  <option value="santakku">Cursive Old Babylonian (font: Santakku)</option>
+  <option value="cuneiformob">Monumental Old Babylonian (font: CuneiformOB)</option>
+<option value="santakkum">Monumental Old Babylonian (font: SantakkuM)</option>
+<option value="ullikummia">Hittite (font: UllikummiA)</option>
+<option value="ullikummib">Hittite (font: UllikummiB)</option>
+<option value="ullikummic">Hittite (font: UllikummiC)</option>
+<option value="assurbanipal" selected="true">Neo-Assyrian (font: Assurbanipal)</option>
+<option value="cuneiformna">Neo-Assyrian (font: CuneiformNA)</option>
+<option value="cuneiformcomposite">Tinney Cuneiform Composite (font: CuneiformComposite)</option>
+<option value="sinacherib">Neo-Assyrian (font: Sinacherib)</option>
+      </select>
+    </td>
+    </tr>
+  <tr>
+    <td valign="top">
+      <label for="translit" style="vertical-align: top">Transliteration:</label>
+    </td>
+    <td valign="top">
+  <textarea rows="5" id="translit" cols="80" onkeypress="return_events(event);" placeholder="Type the transliteration" style="vertical-align: top"></textarea>
+    </td>
+  </tr>
+  <tr><td></td>
+    <td>
+      <button onclick="to_cuneiform();">Convert</button>
+      <button onclick="clear_input()">Clear input</button>
+      <button onclick="clear_output()">Clear output table</button>
+</td>
+  </tr>
+  </tbody>
+  </table>
+
+<div id='output'></div>
+ 
+   <h3>Details</h3>
+
+    You can use ASCII or unicode conventions. ('&scaron;' = 'sz'; '&gbreve;' = 'j', 'e&#x2082;' = 'e2', '&#x1E63;' = 's,', '&#x1E6D;' = 't,', 'm&#xe1;' = 'ma2' etc.)
+    Before conversion, some characters
+    (i.e. '<tt>&lt;&gt;[]_&#x2308;&#x2309;&#x2e22;&#x2e23;</tt>') are removed and others converted into
+    spaces (i.e. '<tt>{}*,;:!()</tt>'). Transliterations are then split
+    on space, dash and full stop.  Transliterations are compared
+    with the readings used by cuneifyplus. Numbers starting with '0x' are treated as unicode codepoints, so '0x12032' = '&#x12032;'. Where the sign list notes a signlist number, you can use that (e.g. aBZL87, LAK709b, MZL3, REC145, ELLES396, KWU689), though only LAK has extensive coverage.  Ambiguous transliterations (e.g. ansze) are enclosed in square brackets, though some readings may not display in the font selected. Unrecognized sequences should display unchanged. I attempt to preserve line breaks. You can press shift-&lt;enter&gt; to type a line break without converting.</p>
+<p>
+    This has only been tested on Chrome browser under Linux.</p>
+
+    <h3>Fonts</h3>
+<p>
+  Using most browsers, the cuneiform should appear on your screen, as the fonts are embedded in the website.
+However, if you wish to copy-and-paste (e.g. into a Word document), you may need to install a font or
+    another that supports the     <a href="https://en.wikipedia.org/wiki/Cuneiform_(Unicode_block)">Cuneiform Unicode block </a> in order for the
+characters to display correctly.  To install the fonts, follow the links below.</p>
+<ul>
+<li>  Google
+  Noto Sans Cuneiform - <a href="https://fonts.google.com/noto/specimen/Noto+Sans+Cuneiform">https://fonts.google.com/noto/specimen/Noto+Sans+Cuneiform</a><br />
+<li>    Santakku - <a href="http://www.hethport.uni-wuerzburg.de/cuneifont/">http://www.hethport.uni-wuerzburg.de/cuneifont/</a> (click on "Old Babylonian Fonts") <br />
+<li>    CuneiformOB - <a href="http://oracc.museum.upenn.edu/doc/help/visitingoracc/fonts/index.html">http://oracc.museum.upenn.edu/doc/help/visitingoracc/fonts/index.html</a> <br />
+<li>    SantakkuM - <a href="http://www.hethport.uni-wuerzburg.de/cuneifont/">http://www.hethport.uni-wuerzburg.de/cuneifont/</a> (click on "Old Babylonian Fonts") <br />
+<li>    UllikummiA - <a href="http://www.hethport.uni-wuerzburg.de/cuneifont/">http://www.hethport.uni-wuerzburg.de/cuneifont/</a> (click on "Hittite Fonts") <br />
+<li>    UllikummiB - <a href="http://www.hethport.uni-wuerzburg.de/cuneifont/">http://www.hethport.uni-wuerzburg.de/cuneifont/</a> (click on "Hittite Fonts") <br />
+<li>    UllikummiC - <a href="http://www.hethport.uni-wuerzburg.de/cuneifont/">http://www.hethport.uni-wuerzburg.de/cuneifont/</a> (click on "Hittite Fonts") <br />
+<li>    Assurbanipal - <a href="http://www.hethport.uni-wuerzburg.de/cuneifont/">http://www.hethport.uni-wuerzburg.de/cuneifont/</a> (click on "Neo-Assyrian Font") <br />
+<li>    CuneformNA - <a href="http://oracc.museum.upenn.edu/doc/help/visitingoracc/fonts/index.html">http://oracc.museum.upenn.edu/doc/help/visitingoracc/fonts/index.html</a> <br />
+<li>    CuneformComposite - <a href="http://oracc.museum.upenn.edu/doc/help/visitingoracc/fonts/index.html">http://oracc.museum.upenn.edu/doc/help/visitingoracc/fonts/index.html</a> <br />
+<li>    Kate&#345;ina &Scaron;a&scaron;kov&aacute;'s Sinacherib - <a href="http://home.zcu.cz/~ksaskova/Instructions.html">http://home.zcu.cz/~ksaskova/Instructions.html</a> <br />
+</ul>
+
+<h3>Credit</h3>
+<p>The page was inspired by <a href="http://oracc.museum.upenn.edu/saao/knpp/cuneiformrevealed/cuneify/">ORACC cuneify</a> and <a href="https://github.com/tpgillam/cuneifyplus/">cuneifyplus</a> (hosted at <a href="http://oracc.museum.upenn.edu/cuneifyplus">http://oracc.museum.upenn.edu/cuneifyplus</a>.) I wanted to create a version that made it easy to cuneify multiple texts consecutively, and this version has the added benefit of not requiring a server, so it should work off-line.</p>
+<p> The signlist was created using <a href="https://github.com/oracc/coredata/blob/master/sign/ogsl-sl.xml">ORACC's XML signlist</a>.</p>
+    <p>This page and data structures were created, using resources mentioned in the references above. They are made available with a <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0 license</a>, by Andrew Senior. Please do cite this page if you use it.</p>
+<p>This page derives from my original <a href="https://andrewsenior.com/luwian">Anatolian / Luwian Hieroglpyhics converter page.</a></p>
+<p>You may also be interested in my  <a href="https://andrewsenior.com/cuneify/sign_data.heml">Sign search</a> to help identify a cuneiform sign from its appearance.</p> and <a href="https://andrewsenior.com/cuneify/sign_counts.html">Sign counts</a> to show the frequencies of different signs and readings.
+
+<p>Corrections, suggestions and feature-requests are welcome (email below).</p>
+    Email: <tt>andrew[at]andrewsenior.com</tt>
+
+<h4>Version history</h4>
+2022 Original version using Tom Gillam's cuneifyplus signlist.<br>
+2023-02-04 Replaced the signlist with one extracted from the ORACC signlist. Added processing of accents &amp; lookup by signlist-number.
+2023-02-27 Lookup with case-independence. Creation of sign-list. Remove ! in transliteration. Handle unicode em-dash and en-dash. Sorting of sign-list by frequency.
+2023-03-18 Added Sinacherib and CuneiformComposite fonts. Turned off auto-copy feature.
+</body>
+  </html>

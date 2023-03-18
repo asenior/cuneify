@@ -1,0 +1,52 @@
+<html>
+  <head>
+<!-- Generated from https://fonts.google.com/noto/specimen/Noto+Sans+Cuneiform -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Cuneiform&display=swap" rel="stylesheet">
+<!-- This code CC share-alike 4.0 Andrew Senior 2024.  -->
+
+    <script type="text/javascript" src="./sign_counts_akk.js"></script>
+    <script type="text/javascript" src="./sign_counts_vis.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link type="text/css" rel="stylesheet" href="cuneify.css">
+</head>
+  <body onload='on_load()'>
+    <h1>Cuneiform sign frequencies</h1>
+
+    Sign counts from parsing ORACC (akk* languages only).<p>
+<div id="freq_chart" style="max-width:700px; height:400px"></div>
+
+    
+    <table class="no_bordered_table">
+      <tbody>
+        <tr>
+          <td><label for="font_name">Display font:</label></td>
+          <td>
+            <select name="font_name" id="font_name" onchange="make_table();">
+              <option value="notosanscuneiform">Noto Sans (font: Noto Sans )</option>
+              <option value="santakku">Cursive Old Babylonian (font: Santakku)</option>
+              <option value="cuneiformob">Monumental Old Babylonian (font: CuneiformOB)</option>
+              <option value="santakkum">Monumental Old Babylonian (font: SantakkuM)</option>
+              <option value="ullikummia">Hittite (font: UllikummiA)</option>
+              <option value="ullikummib">Hittite (font: UllikummiB)</option>
+              <option value="ullikummic">Hittite (font: UllikummiC)</option>
+              <option value="assurbanipal" >Neo-Assyrian (font: Assurbanipal)</option>
+              <option value="cuneiformna" selected="true">Neo-Assyrian (font: CuneiformNA)</option>
+            </select>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <div id='output'></div>
+
+    <h4>About</h4>
+    This page and the data are made available with a <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0 license</a>, by Andrew Senior. Please do cite this page if you use it.</p>
+    See also my <a href="https://andrewsenior.com/cuneify">Cuneiform converter page (cuneify).</a>
+<p>Corrections, suggestions and feature-requests are welcome (email below).</p>
+    Email: <tt>andrew[at]andrewsenior.com</tt>
+    
+  </body>
+</html>

@@ -1,0 +1,134 @@
+  table.bordered_table, td {  border: 1px solid;  border-collapse: collapse;}
+  table.no_bordered_table td {  border: 0px;  border-collapse: collapse;}
+  .notosanscuneiform {
+      font-family: 'Noto Sans Cuneiform';
+  }
+  @font-face {
+    font-family: Santakku;
+    src: url(fonts/Santakku.woff) format("woff"),
+         url(fonts/Santakku.eot) format("embedded-opentype"),
+         url(fonts/Santakku.ttf) format("truetype");
+}
+.santakku {
+    font-family: Santakku;
+}
+@font-face {
+    font-family: CuneiformOB;
+    src: url(fonts/CuneiformOB.woff) format("woff"),
+         url(fonts/CuneiformOB.eot) format("embedded-opentype"),
+         url(fonts/CuneiformOB.ttf) format("truetype");
+}
+.cuneiformob {
+    font-family: CuneiformOB;
+}
+@font-face {
+    font-family: SantakkuM;
+    src: url(fonts/SantakkuM.woff) format("woff"),
+         url(fonts/SantakkuM.eot) format("embedded-opentype"),
+         url(fonts/SantakkuM.ttf) format("truetype");
+}
+.santakkum {
+    font-family: SantakkuM;
+}
+@font-face {
+    font-family: UllikummiA;
+    src: url(fonts/UllikummiA.woff) format("woff"),
+         url(fonts/UllikummiA.eot) format("embedded-opentype"),
+         url(fonts/UllikummiA.ttf) format("truetype");
+}
+.ullikummia {
+    font-family: UllikummiA;
+}
+@font-face {
+    font-family: UllikummiB;
+    src: url(fonts/UllikummiB.woff) format("woff"),
+         url(fonts/UllikummiB.eot) format("embedded-opentype"),
+         url(fonts/UllikummiB.ttf) format("truetype");
+}
+.ullikummib {
+    font-family: UllikummiB;
+}
+@font-face {
+    font-family: UllikummiC;
+    src: url(fonts/UllikummiC.woff) format("woff"),
+         url(fonts/UllikummiC.eot) format("embedded-opentype"),
+         url(fonts/UllikummiC.ttf) format("truetype");
+}
+.ullikummic {
+    font-family: UllikummiC;
+}
+@font-face {
+    font-family: Assurbanipal;
+    src: url(fonts/Assurbanipal.woff) format("woff"),
+         url(fonts/Assurbanipal.eot) format("embedded-opentype"),
+         url(fonts/Assurbanipal.ttf) format("truetype");
+}
+.assurbanipal {
+    font-family: Assurbanipal;
+}
+
+@font-face {
+    font-family: CuneiformNA;
+    src: url(fonts/CuneiformNA.woff) format("woff"),
+         url(fonts/CuneiformNA.eot) format("embedded-opentype"),
+         url(fonts/CuneiformNA.ttf) format("truetype");
+}
+.cuneiformna {
+    font-family: CuneiformNA;
+}
+
+@font-face {
+    font-family: Sinacherib;
+    src: url(fonts/Sinacherib.ttf) format("truetype");
+}
+.sinacherib {
+    font-family: Sinacherib;
+}
+
+
+@font-face {
+    font-family: CuneiformComposite;
+    src: url(fonts/CuneiformComposite.ttf) format("truetype");
+}
+.cuneiformcomposite {
+    font-family: CuneiformComposite;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+      }
