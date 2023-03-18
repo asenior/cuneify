@@ -1,0 +1,64 @@
+<html>
+  <head>
+<!-- Generated from https://fonts.google.com/noto/specimen/Noto+Sans+Cuneiform -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Cuneiform&display=swap" rel="stylesheet">
+<!-- This code CC share-alike 4.0 Andrew Senior 2024.  -->
+
+    <script type="text/javascript" src="./sign_data.js"></script>
+    <script type="text/javascript" src="./sign_data_search.js"></script>
+    <link type="text/css" rel="stylesheet" href="cuneify.css">
+</head>
+  <body onload='on_load()'>
+    <h1>Cuneiform sign search</h1>
+
+    A tool to help find a cuneiform sign by appearance. <br>
+
+    Use the controls to restrict the signs shown.  Stroke counts are
+    computed with the NeoAssyrian 'CuneiformNA' font and will differ for the same sign
+    shown in other fonts. The 'name' is the character name contained in the font file. Readings come from the ORACC sign list (aligned with the unicode code point).</p>
+
+Strokes includes both long strokes and winkelhaken.</p>
+
+    <table class="no_bordered_table">
+      <tbody>
+        <tr>
+          <td><label for="font_name">Display font:</label></td>
+          <td>
+            <select name="font_name" id="font_name">
+              <option value="notosanscuneiform">Noto Sans (font: Noto Sans )</option>
+              <option value="santakku">Cursive Old Babylonian (font: Santakku)</option>
+              <option value="cuneiformob">Monumental Old Babylonian (font: CuneiformOB)</option>
+              <option value="santakkum">Monumental Old Babylonian (font: SantakkuM)</option>
+              <option value="ullikummia">Hittite (font: UllikummiA)</option>
+              <option value="ullikummib">Hittite (font: UllikummiB)</option>
+              <option value="ullikummic">Hittite (font: UllikummiC)</option>
+              <option value="assurbanipal" >Neo-Assyrian (font: Assurbanipal)</option>
+              <option value="cuneiformna" selected="true">Neo-Assyrian (font: CuneiformNA)</option>
+            </select>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>Reading:</td><td><input type="text" id="reading" onenter="search();"> </input>
+            <button onclick="search();">Search</button>
+            <button onclick="reset();">Reset</button>
+      <input type="checkbox" id="show_all_fonts" value="false">Show all fonts</input>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id='radios'></div>
+
+    <div id='sliders'></div>
+    <div id='number_found'></div>
+    <div id='output'></div>
+    <h4>About</h4>
+    CC-BY 4.0 Andrew Senior. See also my <a href="https://andrewsenior.com/cuneify"> Cuneiform converter page (cuneify).</a>
+<p>Corrections, suggestions and feature-requests are welcome (email below).</p>
+    Email: <tt>andrew[at]andrewsenior.com</tt>
+    
+  </body>
+</html>
